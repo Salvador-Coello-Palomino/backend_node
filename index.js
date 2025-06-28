@@ -12,12 +12,14 @@ const sequelize = require('./db');
 
 // Crea una aplicación de Express
 const app = express();
+const testDbRoute = require('./routes/test-db');
 
 // Middleware para permitir solicitudes desde otros dominios (evita errores de CORS)
 app.use(cors());
 
 // Middleware para poder recibir y procesar datos en formato JSON en las solicitudes
 app.use(express.json());
+app.use(testDbRoute);
 
 // Asigna el enrutador de productos bajo la ruta base /api/productos
 app.use('/api/productos', productosRoutes);
